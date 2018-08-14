@@ -1,3 +1,15 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+#main{
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 400px 400px 400px;
+}
+
+#topTen {
+  grid-column-start: 2 ;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
