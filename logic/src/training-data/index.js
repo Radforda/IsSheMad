@@ -1,9 +1,9 @@
-const happy = require('./d-happy')
-const sad   = require('./d-sad')
+const angry = require('./d-angry')
+const okay   = require('./d-okay')
 
 const moods = [
-  ...happy,
-  ...sad
+  ...okay,
+  ...angry
 ];
 
 module.exports = moods
