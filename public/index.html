@@ -14,29 +14,50 @@
 </head>
 
 <body>
-    <div class="jumbotron m-0"><h1>Header</h1>
-        <h2>Eventually design cute header</h2></div>
+    <div class="jumbotron m-0">
+        <h1>Header</h1>
+        <h2>Eventually design cute header</h2>
+    </div>
 
     <div id="main" class="w-100 bg-dark">
-        <div id="inputDiv" class="bg-dark text-light p-2">
-            <h1>Input field</h1>
-            <h2>To put the user input form. Write javascript to change to a results screen.</h2>
+        <div id="inputDiv" class="bg-dark text-light p-2 border border-light">
+            <h1>Fill out the fields below</h1>
+            <div class="form-group m-3">
+                <label for="author">Author Name</label>
+                <input type="text" id="authorName" name="author" class="form-control mb-3">
+                <textarea name="message" id="inputText" class="form-control" cols="5" rows="4" placeholder="What did she say?"></textarea>
+                <button type="submit" class="btn btn-lg bg-success mt-2 text-light">Submit</button>
+            </div>
         </div>
         <div id="topTen" class="bg-light p-2">
-                <h1>Top Ten</h1>
-                <h2>Split into 10 divs with the same class to show top results</h2>
+            <h1>Top Ten</h1>
+            <h2>Split into 10 divs with the same class to show top results</h2>
         </div>
         <div id="suggested gift" class="bg-primary p-2 text-light">
-                <h1>Gift div</h1>
-                <h2>Fill with an image and amazon buy link.</h2>
+            <h1>Maybe you should get her something...</h1>
+            <div class="text-center d-inline-block w-50 h-auto">
+                <h2 class="border border-light bg-dark p-3">Fake Amazon item</h2>
+                <p>Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim burgdoggen, picanha ham sirloin drumstick tail.Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim burgdoggen, picanha ham sirloin drumstick tail.</p>
+                <button class="btn-lg bg-warning text-light">Buy Now!</button>
+            </div>
+            <img src="http://via.placeholder.com/500x300" class="float-right" alt="">
+
         </div>
         <div id="viewByAuthor" class="bg-dark p-2 text-light">
-                <h1>Author drop-down</h1>
-                <h2>User will be able to pick from a list of existing authors here.</h2>
+            <h1>View other author's results!</h1>
+            <form action="">
+                    <div class="form-group col-md-4">
+                            <label for="author">Pick existing author</label>
+                            <select id="author" class="form-control">
+                              <option selected>Choose...</option>
+                              <option>...</option>
+                            </select>
+                          </div>
+            </form>
         </div>
 
     </div>
-    
+
 </body>
 
 </html>
