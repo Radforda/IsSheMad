@@ -21,5 +21,18 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
+  //Post new tweet
+  app.post("/api/new", function(req,res){
+    console.log("hi")
+    db.userInput.create({
+      user: req.body.authorName,
+      text_input: body.author.inputText,
+      score:10
+    }).then(function(dbText){
+      res.json(dbText)
+      console.log("Post request made");
+    })
+  })
 };
 
