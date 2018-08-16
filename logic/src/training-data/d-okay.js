@@ -1,5 +1,4 @@
 const okay = [
-
     {
       input: "I'm okay",
       output: {okay: 1}

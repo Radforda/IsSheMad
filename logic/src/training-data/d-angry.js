@@ -1,7 +1,6 @@
 const angry = [
-
     {
-      input: "k.",
+      input: "Why are you like this?",
       output: {angry: 1}
     },
   
@@ -9,9 +8,8 @@ const angry = [
       input: "I'm fine",
       output: {angry: 1}
     },
-  
     {
-      input: "K",
+      input: "have you gotten any of my text?",
       output: {angry: 1}
     },
   
@@ -81,7 +79,7 @@ const angry = [
     },
   
     {
-      input: "is is a good morning???",
+      input: "is it a good morning???",
       output: {angry: 1}
     },
   

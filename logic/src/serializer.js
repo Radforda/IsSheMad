@@ -1,11 +1,11 @@
 const fixLengths = (data) => {
 
-  let maxLengthInput = -1;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i].input.length > maxLengthInput) {
-      maxLengthInput = data[i].input.length;
-    }
-  }
+  let maxLengthInput = 100;
+  // for (let i = 0; i < data.length; i++) {
+  //   if (data[i].input.length > maxLengthInput) {
+  //     maxLengthInput = data[i].input.length;
+  //   }
+  // }
 
   for (let i = 0; i < data.length; i++) {
     while (data[i].input.length < maxLengthInput) {
