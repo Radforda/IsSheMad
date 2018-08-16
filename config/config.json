@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Newpanda12!",
-    "database": "input_db",
+    "password": "null",
+    "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
   },

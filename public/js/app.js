@@ -1,8 +1,5 @@
 
 
-
-
-
 $('#submit').on('click', function(){
     event.preventDefault();
     var newTweet = {
