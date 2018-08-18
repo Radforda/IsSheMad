@@ -45,7 +45,9 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
-//Logic for machine learning
+//train the neural network
 logic.train();
+var res=logic.run("Where the hell are you???");
+console.log(res);
 
 module.exports = app;
