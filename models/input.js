@@ -1,24 +1,16 @@
 module.exports = function(sequelize, DataTypes) {
-    var userInput = sequelize.define("userInput", {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        autoIncrement:true,
-        primaryKey:true
-      },
+    var userInput = sequelize.define("userinput", {
+ 
       user: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1]
-        }
+        defaultValue:"denina"
+    
       },
       text: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING
       },
       score:{
-          type: DataTypes.DECIMAL(6,4),
-          allowNull:false
+          type: DataTypes.DECIMAL(6,4)
       }
     });
     return userInput;
