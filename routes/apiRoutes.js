@@ -24,14 +24,14 @@ module.exports = function(app) {
 
   //Post new tweet
   app.post("/api/new", function(req,res){
-    console.log("hi")
-    db.userInput.create({
-      user: req.body.authorName,
-      text_input: body.author.inputText,
+    console.log(req.body);
+    db.userinput.create({
+      user: req.body.author,
+      text_input: req.body.text,
       score:10
     }).then(function(dbText){
       res.json(dbText)
-      console.log("Post request made");
+      console.log(dbText , "DB Text");
     })
   })
 };

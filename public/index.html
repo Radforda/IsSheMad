@@ -2,17 +2,12 @@
 
 <head>
     <title>isshemad?</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="styles/styles.css">
+    
 </head>
 
 <body>
@@ -23,19 +18,21 @@
 
     <div id="main" class="w-100 bg-dark">
         <div id="inputDiv" class="bg-dark text-light p-2 border border-light">
-            <h1>Fill out the fields below</h1>
-            <div class="form-group m-3">
+            <h1 class="inputShow">Fill out the fields below</h1>
+            <div class="form-group m-3 inputShow">
                 <label for="author">Author Name</label>
                 <input type="text" id="authorName" name="author" class="form-control mb-3">
                 <textarea name="message" id="inputText" class="form-control" cols="5" rows="4" placeholder="What did she say?"></textarea>
                 <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submit">Submit</button>
             </div>
+            <h1 class="resultsShow hide">Your results were 80%!!</h1>
+            <h2 class="resultsShow hide">Your rank is 30</h2>
         </div>
         <div id="topTen" class="bg-light p-2">
             <h1>Top Ten</h1>
             <h2>Split into 10 divs with the same class to show top results</h2>
         </div>
-        <div id="suggested gift" class="bg-primary p-2 text-light">
+        <div id="suggested gift" class="bg-primary p-2 text-light">2211
             <h1>Maybe you should get her something...</h1>
             <div class="text-center d-inline-block w-50 h-auto">
                 <h2 class="border border-light bg-dark p-3">Fake Amazon item</h2>
@@ -62,6 +59,38 @@
 
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <script src="../public/js/app.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script>
+        
+
+$('#submit').on('click',function(){
+    //event.preventDefault();
+
+    console.log('clicked')
+
+    var newTweet = {
+        author:$("#authorName").val().trim(),
+        text: $("#inputText").val().trim(),
+        score:10
+    }
+    $.post("/api/new", newTweet).then(function(result){
+        console.log('posted')
+    })
+
+    $('.inputShow').addClass('hide');
+    $('.resultsShow').removeClass('hide');
+})
+    </script>
+    
 </body>
 
 </html>
