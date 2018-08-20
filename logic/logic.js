@@ -26,6 +26,7 @@ const logic={
         
         //add angry and subtract happy to determine howAngry then convert to percentage
         howAngry=Math.round((result.superAngry+result.angry-result.okay-result.happy)*100);
+        if(howAngry<0){howAngry=0};
     return howAngry}
 };
 
