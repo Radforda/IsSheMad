@@ -2,7 +2,7 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
-
+var logic=require("./logic/logic");
 var db = require("./models");
 
 var app = express();
@@ -44,5 +44,8 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+
+//train the neural network
+logic.train();
 
 module.exports = app;

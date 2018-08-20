@@ -1,5 +1,10 @@
-DROP DATABASE IF EXISTS exampledb;
-CREATE DATABASE exampledb;
-
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+DROP DATABASE IF EXISTS input_db;
+CREATE DATABASE input_db;
+USE input_db;
+CREATE TABLE userInput(
+    id INT NOT NULL AUTO_INCREMENT,
+    user VARCHAR(140) NOT NULL,
+    text_input VARCHAR(140) NOT NULL,
+    score DECIMAL(6,4) NOT NULL,
+    PRIMARY KEY (id)
+);

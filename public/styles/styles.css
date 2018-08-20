@@ -2,6 +2,9 @@
   line-height: 2.5;
 }
 
+.headerImg { 
+  width:40%; 
+}
 .list-group-item {
   line-height: 2.5;
 }
@@ -28,5 +31,15 @@ h1 {
 .container
   h1.threed 3rd dimension
 
+
+
+.hide{
+  display: none;
+}
+
+.gift {
+  height: 300px;
+  width: 400px;
+}
 
 
