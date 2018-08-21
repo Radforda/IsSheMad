@@ -1,4 +1,5 @@
 var db = require("../models");
+var logic = require("../logic/logic")
 
 module.exports = function(app) {
   // Get all top ten
@@ -30,11 +31,11 @@ module.exports = function(app) {
 
   //Post new tweet
   app.post("/api/new", function(req,res){
-    console.log(req.body);
+    var num = logic.run(req.body.text);
     db.userinput.create({
       user: req.body.author,
-      text_input: req.body.text,
-      score:10
+      text: req.body.text,
+      score:num
     }).then(function(dbText){
       res.json(dbText)
       console.log(dbText , "DB Text");

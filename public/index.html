@@ -25,7 +25,7 @@
                 <textarea name="message" id="inputText" class="form-control" cols="5" rows="4" placeholder="What did she say?"></textarea>
                 <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submit">Submit</button>
             </div>
-            <h1 class="resultsShow hide">Your results were 80%!!</h1>
+            <h1 class="resultsShow hide">Your results were <span id="perc"></span>!!</h1>
             <h2 class="resultsShow hide">Your rank is 30</h2>
         </div>
         <div id="topTen" class="bg-light p-2">
@@ -80,10 +80,9 @@ $('#submit').on('click',function(){
     var newTweet = {
         author:$("#authorName").val().trim(),
         text: $("#inputText").val().trim(),
-        score:10
     }
     $.post("/api/new", newTweet).then(function(result){
-        console.log('posted')
+        $('#perc').text(result.score);
     })
 
     $('.inputShow').addClass('hide');
