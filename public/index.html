@@ -1,19 +1,25 @@
 <html>
 
 <head>
-    <title>isshemad?</title>
-    
+    <title>Is She Mad?</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
-    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/styles.css">
-    
+    <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+
 </head>
+
 
 <body>
     <div class="jumbotron m-0">
-        <h1>Header</h1>
-        <h2>Eventually design cute header</h2>
+        <font><h1>Is She Mad?</h1></font>
+        <img src="styles/images/woman.jpg" alt="wow" class="headerImg"><img src="styles/images/sorry.jpg" alt="mad" class="headerImg">
     </div>
 
     <div id="main" class="w-100 bg-dark">
@@ -32,17 +38,18 @@
             <h1>Top Ten</h1>
             <h2>Split into 10 divs with the same class to show top results</h2>
         </div>
-        <div id="suggested gift" class="bg-primary p-2 text-light">2211
+        <div id="suggested-gift" class="bg-primary p-2 text-light">
             <h1>Maybe you should get her something...</h1>
             <div class="text-center d-inline-block w-50 h-auto">
-                <h2 class="border border-light bg-dark p-3">Fake Amazon item</h2>
-                <p>Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim
+                <h2 class="border border-light bg-dark p-3" id="itemTitle">Fake Amazon item</h2>
+                <p id = "desc">Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim
                     burgdoggen, picanha ham sirloin drumstick tail.Bacon ipsum dolor amet meatball biltong jowl, filet mignon
                     venison salami tenderloin tail. Buffalo cupim burgdoggen, picanha ham sirloin drumstick tail.</p>
-                <button class="btn-lg bg-warning text-light">Buy Now!</button>
+                <a id="button" href="http://google.com" class="btn-lg bg-warning text-light" role="button" target="blank">Buy Now!</a>
             </div>
-            <img src="http://via.placeholder.com/500x300" class="float-right" alt="">
-
+            <div id="item-image" class="float-right">
+                <img src="http://via.placeholder.com/500x300"  alt="">
+            </div>
         </div>
         <div id="viewByAuthor" class="bg-dark p-2 text-light">
             <h1>View other author's results!</h1>
@@ -70,16 +77,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script>
-        
-
-$('#submit').on('click',function(){
-    //event.preventDefault();
+    var score = 95;        
+    $("#suggested-gift").addClass("hide");
+    $('#submit').on('click',function(){
+        //event.preventDefault();
 
     console.log('clicked')
 
     var newTweet = {
         author:$("#authorName").val().trim(),
         text: $("#inputText").val().trim(),
+
     }
     $.post("/api/new", newTweet).then(function(result){
         $('#perc').text(result.score);
@@ -87,7 +95,51 @@ $('#submit').on('click',function(){
 
     $('.inputShow').addClass('hide');
     $('.resultsShow').removeClass('hide');
-})
+
+    if (score < 40) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Bouquet Of Flowers");
+        $("#desc").html("What woman doesn't like flowers. Its a timeless gift that will show her that you are truely sorry for whatever transgression you have commited.");
+        $("#item-image").html("<img src='./images/Flowers.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.1800flowers.com/");
+    } else if (score >= 40 && score < 55) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Chocolate");
+        $("#desc").html("Chocolate says I'm sorry so much better than words.");
+        $("#item-image").html("<img src='./images/chocolate.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.godiva.com/");
+    } else if (score >= 55 && score < 65) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Roses");
+        $("#desc").html("Its now time to break out the big guns. whatever you have done, you probably will want to stop doing it.");
+        $("#item-image").html("<img src='./images/roses.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.1800flowers.com/roses");
+    } else if (score >= 65 && score < 75) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Puppy");
+        $("#desc").html("This gift is almost unfair. Who can say no to a cute puppy, its guaranteed to melt her heart.");
+        $("#item-image").html("<img src='./images/puppy.jpg' class='gift'>");
+        $("#button").attr("href", "www.aspca.org/adopt‎");
+    } else if (score >= 75 && score < 85) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Jewelry");
+        $("#desc").html("She seems like she is starting to get tired of your nonsense. Small jewelry is always a nice choice to bring you back into her good graces.");
+        $("#item-image").html("<img src='./images/jewelry.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.bluenile.com/jewelry?track=NavDrawJewelry");
+    } else if (score >= 85 && score < 95) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("Diamonds");
+        $("#desc").html('Dude, she seems super angry. Diamonds are a "girls best friend". Always a classy choice but they can be expensive. but she deserves it for putting up with your dumb ass.');
+        $("#item-image").html("<img src='./images/diamonds.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.bluenile.com/diamond-jewelry");
+    } else if (score >= 95) {
+        $("#suggested-gift").removeClass("hide");
+        $("#itemTitle").html("A New Car");
+        $("#desc").html('Brah, you probably do not want to go home. She is beyond pissed off. The only thing that might save you is buying her a new car.');
+        $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
+        $("#button").attr("href", "https://www.cars.com/");
+    }
+});
     </script>
     
 </body>
