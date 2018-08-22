@@ -4,35 +4,26 @@ var logic = require("../logic/logic")
 module.exports = function(app) {
   // Get all top ten
   app.get("/api/topten", function(req, res) {
-    db.Post.findAll({
-      where: {
-        score: req.body.score
-      },
-      order: ["score", "DESC"]
-    }).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.userinputs.findAll({
+      order: [["score", "DESC"]]
+    }).then(function(data) {
+      res.json(data);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Post.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
+  app.get("/api/rank", function(req, res){
+    db.userinputs.findAll({
+      limit: 1,
+      order: [["createdAt", "DESC" ]]
+    }).then(function(data){
+      res.json(data);
+    })
+  })
 
   //Post new tweet
   app.post("/api/new", function(req,res){
     var num = logic.run(req.body.text);
-    db.userinput.create({
+    db.userinputs.create({
       user: req.body.author,
       text: req.body.text,
       score:num
@@ -41,13 +32,6 @@ module.exports = function(app) {
       console.log(dbText , "DB Text");
     })
   })
-
-  // // Delete an example by id
-  // app.delete("/api/examples/:id", function(req, res) {
-  //   db.Post.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
 
 };
 

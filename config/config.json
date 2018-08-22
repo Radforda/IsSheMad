@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
 
-    "password": "Newpanda12!",
+    "password": "bobb7426", 
 
     "database": "input_db",
     "host": "localhost",
@@ -21,3 +21,5 @@
     "dialect": "mysql"
   }
 }
+
+

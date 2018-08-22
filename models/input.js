@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var userInput = sequelize.define("userinput", {
+    var userInput = sequelize.define("userinputs", {
  
       user: {
         type: DataTypes.STRING,
