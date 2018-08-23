@@ -47,7 +47,5 @@ db.sequelize.sync(syncOptions).then(function() {
 
 //train the neural network
 logic.train();
-var res=logic.run("Where the hell are you???");
-console.log(res);
 
 module.exports = app;
