@@ -67,7 +67,18 @@ h1 {
 }
 
 .title {
-  display: inline-block;
+  text-align: left;
+}
+
+.tt-style {
+  color:black;
+  border-bottom: solid 1px black;
+  font-size: 4rem;
+}
+
+#navbar {
+  top: -100px; /* Hide the navbar 50 px outside of the top view */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
 }
 
 @media only screen and (max-width: 1000px) {
