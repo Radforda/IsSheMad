@@ -85,7 +85,8 @@
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-        </script>
+        
+
     <script>
     $(function(){
         $("#suggested-gift").hide();
@@ -154,10 +155,7 @@
         }
         $.get("/api/rank", function(data){
             console.log(data);
-            var res = Math.max.apply(Math,data.map(function(o){return o.id;}))
-            var index = data.indexOf(res);
-            console.log(res);
-            console.log(index);
+            
         });
     });
 
