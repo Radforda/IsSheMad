@@ -102,7 +102,7 @@
                 <h1>Top Ten</h1>
             </div>
             
-            <div class="top-ten-list">
+            <div id="top-ten-list" class="bg-light p-2 col-md-12 row mt-5">
                 
             </div> 
           
@@ -135,13 +135,6 @@ $(document).on('scroll', function() {
     scrollFunction();
 });
 
-//         function scrollFunction() {
-//     if ($(document).scrollTop() < 500) {
-//      document.getElementById("navbar").style.top = "0";
-//     } else {
-//     document.getElementById("navbar").style.top = "-100px";
-//   }
-// }
         $(window).scroll(function () {
             if ($(document).scrollTop() < 500) {
                 $('.navbar').addClass('unscrolled-bar');
@@ -163,7 +156,7 @@ $(document).on('scroll', function() {
                 var textDiv = $("<div class=card-body>").html(data[i].text);
                 var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
                 ttdiv.append(p).append(textDiv).append(authorDiv);
-                $("#topTen").append(ttdiv);
+                $("#top-ten-list").append(ttdiv);
             }
         });
     })
@@ -243,13 +236,24 @@ $(document).on('scroll', function() {
             rank+=1;
             console.log(rank);
             $('#rank').text("That text ranked #"+rank+"!");
-
-            // for (i = 0; i < 10; i++){
-            //     $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
-            //     $(".top-ten-list").append("<br>");               
-            // }
-            
         });
+        $.get("/api/topten", function(data){
+            console.log(data);
+            $("#top-ten-list").empty();
+            var topTen;
+            if(data.length<10){
+                topTen=data.length
+            }else{topTen=10};
+            for (var i = 0; i < topTen; i++) {
+                var ttdiv = $("<div class=card>");
+                var p = $("<div class=card-title>").html("#" + (i+1));
+                var textDiv = $("<div class=card-body>").html(data[i].text);
+                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
+                ttdiv.append(p).append(textDiv).append(authorDiv);
+                $("#top-ten-list").append(ttdiv);
+            }
+        });
+
     });
     
 });
