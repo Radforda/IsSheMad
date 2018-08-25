@@ -1,3 +1,5 @@
+console.log("app.js executed");
+
 function scrollFunction() {
     if (document.body.scrollTop > 500) {
         document.getElementById("navbar").style.top = "0";
@@ -11,15 +13,6 @@ $(document).on('scroll', function() {
     scrollFunction();
 });
 
-
-
-// $(window).scroll(function () {
-//     if ($(document).scrollTop() < 500) {
-//         $('.navbar').addClass('unscrolled-bar');
-//     } else {
-//         $('.navbar').removeClass('unscrolled-bar');
-//     }
-// });
 $(function () {
     $("#suggested-gift").hide();
     $.get("/api/topten", function (data) {
@@ -94,3 +87,4 @@ $('#submit').on('click', function () {
 
 
 });
+
