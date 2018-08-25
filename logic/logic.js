@@ -4,7 +4,7 @@ const serializer = require('./src/serializer')
 const net        = new brain.NeuralNetwork()
 
 const logic={
-    train : function(){net.train(serializer.serialize(trainData), {log: true, iterations:10})},
+    train : function(){net.train(serializer.serialize(trainData), {log: true, iterations: 10})},
     run : function(message){
         message=serializer.encode(message);
         maxLengthInput=100;
