@@ -65,7 +65,7 @@
             </div>
             <h1 class="resultsShow">Your results were
                 <span id="perc"></span>!!</h1>
-            <h2 class="resultsShow">Your rank is 30</h2>
+            <h2 id="rank"></h2>
         </div>
 
         <div id="suggestedgift" class="bg-dark p-2 text-light container-fluid p-5 mt-5">
@@ -131,7 +131,18 @@
         crossorigin="anonymous"></script>
     <script>
 
+function scrollFunction() {
+    if (document.body.scrollTop > 500) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-100px";
+    }
+};
 
+
+$(document).on('scroll', function() {
+    scrollFunction();
+});
 
 //         function scrollFunction() {
 //     if ($(document).scrollTop() < 500) {
@@ -168,8 +179,11 @@
     }
 
     $.post("/api/new", newTweet).then(function(result){
+        var id=result.id;
+    
         $('.inputShow').hide();
         $('.resultsShow').show();
+        
         $('#perc').text(result.score);
         if (result.score < 40) {
             $("#suggested-gift").show();
@@ -216,11 +230,15 @@
         }
         $.get("/api/topten", function(data){
             console.log(data);
+            var rank= data.findIndex(x => x.id==id);
+            console.log(rank);
+            $('#rank').text("That text ranked #"+rank+"!");
+
             for (i = 0; i < 10; i++){
                 $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
                 $(".top-ten-list").append("<br>");               
             }
-            $("#rank").append(data.id);
+            
         });
     });
 

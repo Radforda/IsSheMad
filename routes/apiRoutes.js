@@ -16,6 +16,7 @@ module.exports = function(app) {
       limit: 1,
       order: [["createdAt", "DESC" ]]
     }).then(function(data){
+      console.log(data);
       res.json(data);
     })
   })
