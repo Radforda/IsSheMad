@@ -99,6 +99,81 @@ const happy = [
       output: {happy: 1}
     },
   
+    {
+      input: "You're the best! Thanks!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "I love you",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "CARLA there’s buy one get one free chipotle on saturday with the discount STUDENT!!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "I am so proud that you decided to lose weight! ",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "Okie Dokie",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "What do you want me to pick up for food?",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "Love you!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "Okie dokie!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "you're wonderful. i trust you.",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "I'm going skateboarding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "You can have my sandwich from last Tuesday morning!",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "Thanks! You're great",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "You are the best dad.",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "you make so happy",
+      output: {happy: 1}
+    },
+  
+    {
+      input: "that's great!!!",
+      output: {happy: 1}
+    },
+  
   ]
   
   module.exports = happy

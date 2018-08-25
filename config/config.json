@@ -1,9 +1,7 @@
 {
   "development": {
     "username": "root",
-
-    "password": "Skip123!", 
-
+    "password": "bobb7426",
     "database": "input_db",
     "host": "localhost",
     "dialect": "mysql"

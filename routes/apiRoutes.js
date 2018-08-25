@@ -11,7 +11,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/rank", function(req, res){
+  app.get("/api/rank", function(req, res) {
     db.userinputs.findAll({
       limit: 1,
       order: [["createdAt", "DESC" ]]

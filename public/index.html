@@ -98,23 +98,11 @@
             <div class="col-md-12">
                 <h1>Top Ten</h1>
             </div>
-
-            <div class="col-md-4" id="tt-name">
-                <h1 class="title">Name</h1>
-            </div>
-
-            <div class="col-md-4" id="tt-score">
-                <h1 class="title"> Score</h1>
-            </div>
-
-            <div class="col-md-4" id="tt-text">
-                <h1 class="title"> Text </h1>
-            </div>
-
+            
             <div class="top-ten-list">
-
-            </div>
-
+                
+            </div> 
+          
         </div>
 
     </div>
@@ -162,14 +150,20 @@ $(document).on('scroll', function() {
         $("#suggested-gift").hide();
         $.get("/api/topten", function(data){
             console.log(data);
-            for (i = 0; i < 10; i++){
-                $("#tt-name").append('<h2>'+ data[i].user + "&nbsp;&nbsp;&nbsp;" + "</h2><br>").addClass('tt-style') 
-                $('#tt-score').append('<h2>'+ data[i].score + "&nbsp;&nbsp;&nbsp;"  + "</h2><br>").addClass('tt-style')
-            $('#tt-text').append('<h2>'+ data[i].text + "&nbsp;&nbsp;&nbsp;"  + "</h2><br>").addClass('tt-style')                             
+            var topTen;
+            if(data.length<10){
+                topTen=data.length
+            }else{topTen=10};
+            for (var i = 0; i < topTen; i++) {
+                var ttdiv = $("<div class=card>");
+                var p = $("<div class=card-title>").html("#" + (i+1));
+                var textDiv = $("<div class=card-body>").html(data[0].text);
+                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
+                ttdiv.append(p).append(textDiv).append(authorDiv);
+                $("#topTen").append(ttdiv);
             }
         });
     })
-
     $('#submit').on('click',function(){
         //event.preventDefault();
     console.log('clicked')
@@ -231,17 +225,17 @@ $(document).on('scroll', function() {
         $.get("/api/topten", function(data){
             console.log(data);
             var rank= data.findIndex(x => x.id==id);
+            rank+=1;
             console.log(rank);
             $('#rank').text("That text ranked #"+rank+"!");
 
-            for (i = 0; i < 10; i++){
-                $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
-                $(".top-ten-list").append("<br>");               
-            }
+            // for (i = 0; i < 10; i++){
+            //     $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
+            //     $(".top-ten-list").append("<br>");               
+            // }
             
         });
     });
-
     
 });
 
@@ -257,7 +251,12 @@ $('#submitAuthor').on('click',function(){
             console.log(data.length);
             for(var i=0; i<data.length; i++){
                 console.log(" it should be displaying this" +data[i].text);
-                $("#authorTexts").append(data[i].text);
+                // $("#authorTexts").append(data[i].text);
+                var atdiv = $("<div class=card>");
+                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].score + "%");
+                var textDiv = $("<div class=card-body>").html(data[i].text);
+                atdiv.append(textDiv).append(authorDiv);
+                $("#authorTexts").append(atdiv);
             }
         $.get("/api/rank", function(data){
             console.log(data);
