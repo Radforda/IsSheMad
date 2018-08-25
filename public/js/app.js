@@ -37,43 +37,43 @@ $('#submit').on('click', function () {
         $('.resultsShow').show();
         $('#perc').text(result.score);
         if (result.score < 40) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Bouquet Of Flowers");
             $("#desc").html("What woman doesn't like flowers. Its a timeless gift that will show her that you are truely sorry for whatever transgression you have commited.");
             $("#item-image").html("<img src='./images/Flowers.jpg' class='gift'>");
             $("#button").attr("href", "https://www.1800flowers.com/");
         } else if (result.score >= 40 && result.score < 55) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Chocolate");
             $("#desc").html("Chocolate says I'm sorry so much better than words.");
             $("#item-image").html("<img src='./images/chocolate.jpg' class='gift'>");
             $("#button").attr("href", "https://www.godiva.com/");
         } else if (result.score >= 55 && result.score < 65) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Roses");
             $("#desc").html("Its now time to break out the big guns. whatever you have done, you probably will want to stop doing it.");
             $("#item-image").html("<img src='./images/roses.jpg' class='gift'>");
             $("#button").attr("href", "https://www.1800flowers.com/roses");
         } else if (result.score >= 65 && result.score < 75) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Puppy");
             $("#desc").html("This gift is almost unfair. Who can say no to a cute puppy, its guaranteed to melt her heart.");
             $("#item-image").html("<img src='./images/puppy.jpg' class='gift'>");
             $("#button").attr("href", "www.aspca.org/adopt‎");
         } else if (result.score >= 75 && result.score < 85) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Jewelry");
             $("#desc").html("She seems like she is starting to get tired of your nonsense. Small jewelry is always a nice choice to bring you back into her good graces.");
             $("#item-image").html("<img src='./images/jewelry.jpg' class='gift'>");
             $("#button").attr("href", "https://www.bluenile.com/jewelry?track=NavDrawJewelry");
         } else if (result.score >= 85 && result.score < 95) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("Diamonds");
             $("#desc").html('Dude, she seems super angry. Diamonds are a "girls best friend". Always a classy choice but they can be expensive. but she deserves it for putting up with your dumb ass.');
             $("#item-image").html("<img src='./images/diamonds.jpg' class='gift'>");
             $("#button").attr("href", "https://www.bluenile.com/diamond-jewelry");
         } else if (result.score >= 95) {
-            $("#suggested-gift").show();
+            $("#suggestedgift").show();
             $("#itemTitle").html("A New Car");
             $("#desc").html('Brah, you probably do not want to go home. She is beyond pissed off. The only thing that might save you is buying her a new car.');
             $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");

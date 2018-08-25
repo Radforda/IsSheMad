@@ -20,6 +20,18 @@ module.exports = function(app) {
     })
   })
 
+  app.get("/api/author/:author", function(req, res) {
+    console.log("author request running")
+    var author=req.param('author');
+    console.log(author);
+    db.userinputs.findAll({
+      where:{user : author}
+    }).then(function(data) {
+      console.log(data);
+      res.json(data);
+    });
+  });
+
   //Post new tweet
   app.post("/api/new", function(req,res){
     var num = logic.run(req.body.text);
