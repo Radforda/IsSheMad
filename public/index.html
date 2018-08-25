@@ -157,7 +157,7 @@ $(document).on('scroll', function() {
             for (var i = 0; i < topTen; i++) {
                 var ttdiv = $("<div class=card>");
                 var p = $("<div class=card-title>").html("#" + (i+1));
-                var textDiv = $("<div class=card-body>").html(data[0].text);
+                var textDiv = $("<div class=card-body>").html(data[i].text);
                 var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
                 ttdiv.append(p).append(textDiv).append(authorDiv);
                 $("#topTen").append(ttdiv);
