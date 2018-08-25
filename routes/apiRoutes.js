@@ -13,15 +13,10 @@ module.exports = function(app) {
 
   app.get("/api/rank", function(req, res) {
     db.userinputs.findAll({
-<<<<<<< HEAD
-      order: [["score", "DESC"]]
-    }).then(function(data) {
-=======
       limit: 1,
       order: [["createdAt", "DESC" ]]
     }).then(function(data){
       console.log(data);
->>>>>>> master
       res.json(data);
     })
   })
