@@ -12,27 +12,50 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+
 
 </head>
 
 
 <body>
     <div class="navbar fixed-top bg-light" id="navbar">
-        Is She Mad?
-        <a href="#">Form</a>
-        <a href="#">Gifts</a>
-        <a href="#">Search By Author</a>
-        <a href="#">Top Ten</a>
+        <h2 id="navTitle">Is She Mad?</h2>
+        <a href="#inputDiv" class="navlinks">Form</a>
+        <a href="#suggestedgift" class="navlinks">Gifts</a>
+        <a href="#viewByAuthor" class="navlinks">Search By Author</a>
+        <a href="#topTen" class="navlinks">Top Ten</a>
     </div>
-    <div class="jumbotron">
+    <div class="jumbotron jumbotron-fluid w-100; text-center">
 
 
         <h1 id="header-text">Is She Mad?</h1>
+        <div class="w-100" id="topLinks">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <a href="#inputDiv">Form</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#suggestedgift">Gifts</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#viewByAuthor">Search by Author</a>
+                </li>
+                <li class="list-inline-item">
+                    <a href="#topTen">Top Ten</a>
+                </li>
+            </ul>
+            <!-- <i class="fas fa-angle-down"></i> -->
 
+
+        </div>
     </div>
 
     <div id="main" class="bg-light container">
-        <div id="inputDiv" class="bg-light text-dark p-2 border border-light">
+
+        <div id="inputDiv" class="bg-light text-dark p-2 border border-light mt-5">
             <h1 class="inputShow">Fill out the fields below</h1>
             <div class="form-group m-3 inputShow">
                 <label for="author">Author Name</label>
@@ -42,10 +65,10 @@
             </div>
             <h1 class="resultsShow">Your results were
                 <span id="perc"></span>!!</h1>
-            <h2 class="resultsShow">Your rank is 30</h2>
+            <h2 id="rank"></h2>
         </div>
 
-        <div id="suggested-gift" class="bg-dark p-2 text-light container-fluid p-5">
+        <div id="suggestedgift" class="bg-dark p-2 text-light container-fluid p-5 mt-5">
             <div class="row">
                 <h1>Maybe you should get her something...</h1>
                 <div id="item-image" class="col-md-5 mt-5 ml-1">
@@ -61,21 +84,19 @@
 
             </div>
         </div>
-        <div id="viewByAuthor" class="bg-light p-2 text-light">
+        <div id="viewByAuthor" class="bg-light p-2 text-dark">
             <h1>View other author's results!</h1>
-            <form action="">
-                <div class="form-group col-md-4">
-                    <label for="author">Pick existing author</label>
-                    <select id="author" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-            </form>
+            <div class="form-group m-3 ">
+                <label for="authorSearch">Author Name</label>
+                <input type="text" id="authorSearch" name="authorSearch" class="form-control mb-3">
+                <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submitAuthor">Submit</button>
+            </div>
+        <div id="authorTexts"></div>
+            
         </div>
-        <div id="topTen" class="bg-light p-2 col-md-12 row">
+        <div id="topTen" class="bg-light p-2 col-md-12 row mt-5">
             <div class="col-md-12">
-                    <h1>Top Ten</h1>
+                <h1>Top Ten</h1>
             </div>
             
             <div class="top-ten-list">
@@ -90,13 +111,27 @@
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="../public/js/app.js"></script>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
     <script>
+
+function scrollFunction() {
+    if (document.body.scrollTop > 500) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-100px";
+    }
+};
+
+
+$(document).on('scroll', function() {
+    scrollFunction();
+});
+
 //         function scrollFunction() {
 //     if ($(document).scrollTop() < 500) {
 //      document.getElementById("navbar").style.top = "0";
@@ -164,9 +199,13 @@
         author:$("#authorName").val().trim(),
         text: $("#inputText").val().trim(),
     }
+
     $.post("/api/new", newTweet).then(function(result){
+        var id=result.id;
+    
         $('.inputShow').hide();
         $('.resultsShow').show();
+        
         $('#perc').text(result.score);
         if (result.score < 40) {
             $("#suggested-gift").show();
@@ -211,13 +250,43 @@
             $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
             $("#button").attr("href", "https://www.cars.com/");
         }
+        $.get("/api/topten", function(data){
+            console.log(data);
+            var rank= data.findIndex(x => x.id==id);
+            console.log(rank);
+            $('#rank').text("That text ranked #"+rank+"!");
+
+            for (i = 0; i < 10; i++){
+                $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
+                $(".top-ten-list").append("<br>");               
+            }
+            
+        });
+    });
+    
+});
+
+$('#submitAuthor').on('click',function(){
+        //event.preventDefault();
+    console.log('author query clicked')
+    var authorQuery = "/api/author/"+$("#authorSearch").val().trim();
+    console.log(authorQuery);
+    
+    $.get(authorQuery, function(data){
+            console.log("get request returned");
+            console.log(data);
+            console.log(data.length);
+            for(var i=0; i<data.length; i++){
+                console.log(" it should be displaying this" +data[i].text);
+                $("#authorTexts").append(data[i].text);
+            }
         $.get("/api/rank", function(data){
             console.log(data);
     
         });
     });
-    
 });
+    
     </script>
 
 </body>
