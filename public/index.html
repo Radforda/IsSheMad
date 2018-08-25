@@ -61,17 +61,15 @@
 
             </div>
         </div>
-        <div id="viewByAuthor" class="bg-light p-2 text-light">
+        <div id="viewByAuthor" class="bg-light p-2 text-dark">
             <h1>View other author's results!</h1>
-            <form action="">
-                <div class="form-group col-md-4">
-                    <label for="author">Pick existing author</label>
-                    <select id="author" class="form-control">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                    </select>
-                </div>
-            </form>
+            <div class="form-group m-3 ">
+                <label for="authorSearch">Author Name</label>
+                <input type="text" id="authorSearch" name="authorSearch" class="form-control mb-3">
+                <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submitAuthor">Submit</button>
+            </div>
+        <div id="authorTexts"></div>
+            
         </div>
         <div id="topTen" class="bg-light p-2 col-md-12 row">
             <div class="col-md-12">
@@ -145,6 +143,7 @@
         author:$("#authorName").val().trim(),
         text: $("#inputText").val().trim(),
     }
+
     $.post("/api/new", newTweet).then(function(result){
         $('.inputShow').hide();
         $('.resultsShow').show();
@@ -192,14 +191,40 @@
             $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
             $("#button").attr("href", "https://www.cars.com/");
         }
-        $.get("/api/rank", function(data){
+        $.get("/api/topten", function(data){
             console.log(data);
-    
+            for (i = 0; i < 10; i++){
+                $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
+                $(".top-ten-list").append("<br>");               
+            }
+            $("#rank").append(data.id);
         });
     });
 
     
 });
+
+$('#submitAuthor').on('click',function(){
+        //event.preventDefault();
+    console.log('author query clicked')
+    var authorQuery = "/api/author/"+$("#authorSearch").val().trim();
+    console.log(authorQuery);
+    
+    $.get(authorQuery, function(data){
+            console.log("get request returned");
+            console.log(data);
+            console.log(data.length);
+            for(var i=0; i<data.length; i++){
+                console.log(" it should be displaying this" +data[i].text);
+                $("#authorTexts").append(data[i].text);
+            }
+        $.get("/api/rank", function(data){
+            console.log(data);
+    
+        });
+    });
+});
+    
     </script>
 
 </body>
