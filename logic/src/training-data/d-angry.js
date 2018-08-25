@@ -98,6 +98,81 @@ const angry = [
       output: {angry: 1}
     },
   
+    {
+      input: "You always do this. Every time I do something without you it's an issue.",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "Could you not do that again?",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "I don't really deal with angry people",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "Dinner was at 4. It is now 6. What time will you be home?",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "are you still mad?",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "You forgot",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "It's fine.",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "Fine. ",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "i don't know",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "We need to talk",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "Yea. It was egg salad.",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "can you stop. please?",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "You are a mean guy.",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "you’ve got to be kidding me",
+      output: {angry: 1}
+    },
+  
+    {
+      input: "you need to come home now!",
+      output: {angry: 1}
+    },
+  
   ]
   
   module.exports = angry

@@ -30,7 +30,34 @@ h1 {
   font-size-adjust: inherit;
 }
 
+.card {
+  border: 1px solid red;
+  border-radius: 5px;
+  margin: 16px;
+  width: 45%;
+  margin-left: 25px;
+}
 
+.card-title {
+  font-size: 20px;
+  font-family: 'Rock Salt', sans-serif;
+  padding: 10px;
+}
+
+.card-body {
+  text-align: center;
+  font-size: 30px;
+}
+
+.card-footer {
+  font-size: 25px;
+  font-style: italic;
+  text-align: right;
+}
+
+.bottom {
+  background-color: white;
+}
 
 
 .hide{

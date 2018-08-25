@@ -99,6 +99,81 @@ const okay = [
       output: {okay: 1}
     },
   
+    {
+      input: "Hey",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "The second course isn't loading. The offices are all closed, is there a number I can call now?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "I am not sure why the house is lit up. Did you leave lights on?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "the package is inside",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "We have some already",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "Ok",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "Okay",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "hows it hanging?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "What up",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "Did you take my sandwich?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "hi",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "Can you get some milk?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "my day is going okay",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "where are you?",
+      output: {okay: 1}
+    },
+  
+    {
+      input: "I binge watched the whole thing this weekend. Incredible show.",
+      output: {okay: 1}
+    },
+  
   ]
   
   module.exports = okay

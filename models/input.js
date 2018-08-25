@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING
       },
       score:{
-          type: DataTypes.INTEGER
+          type: DataTypes.DECIMAL(7,4)
       }
     });
     return userInput;

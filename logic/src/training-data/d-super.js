@@ -96,6 +96,85 @@ var superAngry = [
     {
       input: "why can you just behave",
       output: {superAngry: 1}
+    },
+  
+    {
+      input: "DO NOT KEEP IGNORING ME",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "it's all right, I'll fix it",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "K.",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "Psh. ",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "what you talking about?",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "You are a loser and I hate you",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "Bitch that was my sandwich.",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "you can go burn in hell. i'm going to burn all of your things so they will be waiting for you in hell when you get there",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "I hate my job, and the insurance company is pissing me off!!",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "why would you say something like that you idiot ?",
+      output: {superAngry: 1}
+    },
+  
+    {
+      input: "why don't you just fuck off!!!",
+      output: {superAngry: 1}
+    },
+  
+  
+    {
+      input: "YOU FUCKING SON OF A BITCH I WAS IN ANGRY BIRDS. ONE FUCKING PIG LEFT TO KILL AND YOUR FUCKING TEXT POPPED UP SENDING MY BIRD FLYING TO SHIT DIRECTIONS FUCK YOU",
+      output: {superAngry: 1}
+    },
+  
+  
+    {
+      input: "I'm Fine!",
+      output: {superAngry: 1}
+    },
+  
+  
+    {
+      input: "Check your texts, you should have one",
+      output: {superAngry: 1}
+    },
+  
+  
+    {
+      input: "What the fuck are you doing?",
+      output: {superAngry: 1}
     }
   
   ]
