@@ -81,6 +81,11 @@ h1 {
   transition: top 0.3s; /* Transition effect when sliding down (and up) */
 }
 
+.navlinks {
+  font-size: 2em;
+  color: red;
+}
+  
 @media only screen and (max-width: 1000px) {
 
 
