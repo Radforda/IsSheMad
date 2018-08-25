@@ -61,7 +61,7 @@
 
             </div>
         </div>
-        <div id="viewByAuthor" class="bg-light p-2 text-light">
+        <div id="viewByAuthor" class="bg-light p-2 text-dark">
             <h1>View other author's results!</h1>
             <div class="form-group m-3 ">
                 <label for="authorSearch">Author Name</label>
@@ -191,14 +191,14 @@
             $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
             $("#button").attr("href", "https://www.cars.com/");
         }
-        // $.get("/api/topten", function(data){
-        //     console.log(data);
-        //     for (i = 0; i < 10; i++){
-        //         $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
-        //         $(".top-ten-list").append("<br>");               
-        //     }
-        //     $("#rank").append(data.id);
-        // });
+        $.get("/api/topten", function(data){
+            console.log(data);
+            for (i = 0; i < 10; i++){
+                $(".top-ten-list").append(data[i].user + "&nbsp;&nbsp;&nbsp;" + data[i].score);
+                $(".top-ten-list").append("<br>");               
+            }
+            $("#rank").append(data.id);
+        });
     });
 
     
@@ -215,6 +215,7 @@ $('#submitAuthor').on('click',function(){
             console.log(data);
             console.log(data.length);
             for(var i=0; i<data.length; i++){
+                console.log(" it should be displaying this" +data[i].text);
                 $("#authorTexts").append(data[i].text);
             }
         $.get("/api/rank", function(data){
