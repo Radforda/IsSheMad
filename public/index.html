@@ -63,13 +63,15 @@
                 <textarea name="message" id="inputText" class="form-control" cols="5" rows="4" placeholder="What did she say?"></textarea>
                 <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submit">Submit</button>
             </div>
-            <h1 class="resultsShow">Your results were
-                <span id="perc"></span>!!</h1>
-            <h2 id="rank"></h2>
-        </div>
-
+            </div>
+      
         <div id="suggestedgift" class="bg-dark p-2 text-light container-fluid p-5 mt-5">
-            <div class="row">
+            <div>
+                    <h1 class="resultsShow col-md-12">Your results were
+                            <span id="perc"></span>!!</h1>
+                        <h2 id="rank"></h2>
+                    </div>
+            
                 <h1>Maybe you should get her something...</h1>
                 <div id="item-image" class="col-md-5 mt-5 ml-1">
                     Image placeholder
@@ -181,7 +183,7 @@ $(document).on('scroll', function() {
     $.post("/api/new", newTweet).then(function(result){
         var id=result.id;
     
-        $('.inputShow').hide();
+     
         $('.resultsShow').show();
         
         $('#perc').text(result.score);
