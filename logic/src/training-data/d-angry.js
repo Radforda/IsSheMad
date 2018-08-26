@@ -5,10 +5,6 @@ const angry = [
     },
   
     {
-      input: "I'm fine",
-      output: {angry: 1}
-    },
-    {
       input: "have you gotten any of my text?",
       output: {angry: 1}
     },
@@ -28,10 +24,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "fine",
-      output: {angry: 1}
-    },
   
     {
       input: "so who is that girl",
@@ -58,15 +50,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "so...",
-      output: {angry: 1}
-    },
-  
-    {
-      input: "Good night.",
-      output: {angry: 1}
-    },
   
     {
       input: "hello???",
@@ -78,10 +61,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "is it a good morning???",
-      output: {angry: 1}
-    },
   
     {
       input: "why haven't you texted me back yet???",
@@ -93,10 +72,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "I guess",
-      output: {angry: 1}
-    },
   
     {
       input: "You always do this. Every time I do something without you it's an issue.",
@@ -118,10 +93,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "are you still mad?",
-      output: {angry: 1}
-    },
   
     {
       input: "You forgot",
@@ -133,10 +104,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "Fine. ",
-      output: {angry: 1}
-    },
   
     {
       input: "i don't know",
@@ -158,10 +125,6 @@ const angry = [
       output: {angry: 1}
     },
   
-    {
-      input: "You are a mean guy.",
-      output: {angry: 1}
-    },
   
     {
       input: "you’ve got to be kidding me",

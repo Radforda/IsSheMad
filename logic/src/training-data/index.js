@@ -7,8 +7,7 @@ const happy   = require('./d-happy')
 const moods = [
   ...okay,
   ...angry,
-  ...superAngry,
-  ...happy
+  ...superAngry
 ];
 
 module.exports = moods

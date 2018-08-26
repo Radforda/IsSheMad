@@ -1,9 +1,5 @@
 const okay = [
-    {
-      input: "I'm okay",
-      output: {okay: 1}
-    },
-  
+    
     {
       input: "I'm good",
       output: {okay: 1}
@@ -79,10 +75,6 @@ const okay = [
       output: {okay: 1}
     },
   
-    {
-      input: "whats the plan?",
-      output: {okay: 1}
-    },
   
     {
       input: "sounds good!",
@@ -105,11 +97,6 @@ const okay = [
     },
   
     {
-      input: "The second course isn't loading. The offices are all closed, is there a number I can call now?",
-      output: {okay: 1}
-    },
-  
-    {
       input: "I am not sure why the house is lit up. Did you leave lights on?",
       output: {okay: 1}
     },
@@ -124,15 +111,6 @@ const okay = [
       output: {okay: 1}
     },
   
-    {
-      input: "Ok",
-      output: {okay: 1}
-    },
-  
-    {
-      input: "Okay",
-      output: {okay: 1}
-    },
   
     {
       input: "hows it hanging?",

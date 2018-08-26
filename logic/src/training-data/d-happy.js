@@ -44,10 +44,6 @@ const happy = [
       output: {happy: 1}
     },
   
-    {
-      input: "how are you doing?",
-      output: {happy: 1}
-    },
   
     {
       input: "What are you doing tomorrow night? :P",
@@ -55,7 +51,7 @@ const happy = [
     },
   
     {
-      input: ":et's do something tonight.xD",
+      input: "let's do something tonight.xD",
       output: {happy: 1}
     },
   
@@ -71,21 +67,6 @@ const happy = [
   
     {
       input: "We should do something fun!",
-      output: {happy: 1}
-    },
-  
-    {
-      input: "How's the family?",
-      output: {happy: 1}
-    },
-  
-    {
-      input: "We're no strangers to love. You know the rules, and so do I!",
-      output: {happy: 1}
-    },
-  
-    {
-      input: "Clapping for your success!",
       output: {happy: 1}
     },
   
@@ -119,10 +100,6 @@ const happy = [
       output: {happy: 1}
     },
   
-    {
-      input: "Okie Dokie",
-      output: {happy: 1}
-    },
   
     {
       input: "What do you want me to pick up for food?",
@@ -144,10 +121,6 @@ const happy = [
       output: {happy: 1}
     },
   
-    {
-      input: "I'm going skateboarding!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",
-      output: {happy: 1}
-    },
   
     {
       input: "You can have my sandwich from last Tuesday morning!",
