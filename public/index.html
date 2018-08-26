@@ -71,8 +71,8 @@
                     <span id="perc"></span>% angry!!!</h1>
                 <h2 id="rank" class="text-center"></h2>
             </div>
-            <div class="row">
-                <h1 id="giftTitle" class="text-center">Maybe you should get her something...</h1>
+            <div class="row text-center">
+                <h1 id="giftTitle" class="">Maybe you should get her something...</h1>
                 <h1 id="inputCallToAction">Fill Out the form above to see how angry she is, and we will provide suggestions for a gift!</h1>
                 <div id="item-image" class="col-md-5 mt-5">
                     Image placeholder
@@ -86,30 +86,30 @@
             </div>
 
         </div>
-    <div id="viewByAuthor" class="bg-light p-2 text-dark">
-        <h1>View other author's results!</h1>
-        <div class="form-group m-3 ">
-            <label for="authorSearch">Author Name</label>
-            <input type="text" id="authorSearch" name="authorSearch" class="form-control mb-3">
-            <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submitAuthor">Submit</button>
-        </div>
-        <div id="authorTexts"></div>
-
-    </div>
-    <div id="topTen" class="bg-light p-2 col-md-12 row mt-5">
-        <div class="col-md-12">
-            <h1>Top Ten</h1>
-        </div>
-
-        <div id="top-ten-list" class="bg-light p-2 col-md-12 row mt-5">
+        <div id="viewByAuthor" class="bg-light p-2 text-dark">
+            <h1>View other author's results!</h1>
+            <div class="form-group m-3 ">
+                <label for="authorSearch">Author Name</label>
+                <input type="text" id="authorSearch" name="authorSearch" class="form-control mb-3">
+                <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submitAuthor">Submit</button>
+            </div>
+            <div id="authorTexts"></div>
 
         </div>
+        <div id="topTen" class="bg-light p-2 col-md-12 row mt-5">
+            <div class="col-md-12">
+                <h1>Top Ten</h1>
+            </div>
 
+            <div id="top-ten-list" class="bg-light p-2 col-md-12 row mt-5">
+
+            </div>
+
+
+        </div>
 
     </div>
-
     </div>
-</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
@@ -167,6 +167,7 @@
         $('#item-image').hide();
         $('#gift-description').hide();
         $('#giftTitle').hide();
+
         $('#submit').on('click', function () {
             event.preventDefault();
             console.log('clicked')
@@ -174,6 +175,9 @@
                 author: $("#authorName").val().trim(),
                 text: $("#inputText").val().trim(),
             }
+
+            $("authorName").val('');
+            $("inputText").val("");
 
             $.post("/api/new", newTweet).then(function (result) {
                 var id = result.id;
