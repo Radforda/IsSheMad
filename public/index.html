@@ -63,26 +63,28 @@
                 <textarea name="message" id="inputText" class="form-control" cols="5" rows="4" placeholder="What did she say?"></textarea>
                 <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submit">Submit</button>
             </div>
-            <h1 class="resultsShow">Your results were
-                <span id="perc"></span>!!</h1>
-            <h2 id="rank"></h2>
         </div>
 
         <div id="suggestedgift" class="bg-dark p-2 text-light container-fluid p-5 mt-5">
-            <div class="row">
-                <h1>Maybe you should get her something...</h1>
-                <div id="item-image" class="col-md-5 mt-5 ml-1">
+            <div>
+                <h1 class="resultsShow col-md-12">That text was
+                    <span id="perc"></span>% angry!!!</h1>
+                <h2 id="rank" class="text-center"></h2>
+            </div>
+            <div class="row text-center">
+                <h1 id="giftTitle" class="">Maybe you should get her something...</h1>
+                <h1 id="inputCallToAction">Fill Out the form above to see how angry she is, and we will provide suggestions for a gift!</h1>
+                <div id="item-image" class="col-md-5 mt-5">
                     Image placeholder
                 </div>
                 <div id="gift-description" class="text-center col-md-6 mt-5">
                     <h2 class="border border-light bg-dark p-3" id="itemTitle">Fake Amazon item</h2>
-                    <h2 id="desc">Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim
-                        burgdoggen, picanha ham sirloin drumstick tail.Bacon ipsum dolor amet meatball biltong jowl, filet
-                        mignon venison salami tenderloin tail. Buffalo cupim burgdoggen, picanha ham sirloin drumstick tail.</h2>
+                    <h2 id="desc">Bacon ipsum dolor amet meatball biltong jowl, filet mignon venison salami tenderloin tail. Buffalo cupim</h2>
                     <a id="button" href="http://google.com" class="btn-lg bg-warning text-light p-2" role="button" target="blank">Buy Now!</a>
                 </div>
 
             </div>
+
         </div>
         <div id="viewByAuthor" class="bg-light p-2 text-dark">
             <h1>View other author's results!</h1>
@@ -91,20 +93,22 @@
                 <input type="text" id="authorSearch" name="authorSearch" class="form-control mb-3">
                 <button type="submit" class="btn btn-lg bg-success mt-2 text-light" id="submitAuthor">Submit</button>
             </div>
-        <div id="authorTexts"></div>
-            
+            <div id="authorTexts"></div>
+
         </div>
         <div id="topTen" class="bg-light p-2 col-md-12 row mt-5">
             <div class="col-md-12">
                 <h1>Top Ten</h1>
             </div>
-            
+
             <div id="top-ten-list" class="bg-light p-2 col-md-12 row mt-5">
-                
-            </div> 
-          
+
+            </div>
+
+
         </div>
 
+    </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -119,18 +123,18 @@
         crossorigin="anonymous"></script>
     <script>
 
-function scrollFunction() {
-    if (document.body.scrollTop > 500) {
-        document.getElementById("navbar").style.top = "0";
-    } else {
-        document.getElementById("navbar").style.top = "-100px";
-    }
-};
+        function scrollFunction() {
+            if (document.body.scrollTop > 500) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-100px";
+            }
+        };
 
 
-$(document).on('scroll', function() {
-    scrollFunction();
-});
+        $(document).on('scroll', function () {
+            scrollFunction();
+        });
 
         $(window).scroll(function () {
             if ($(document).scrollTop() < 500) {
@@ -139,136 +143,152 @@ $(document).on('scroll', function() {
                 $('.navbar').removeClass('unscrolled-bar');
             }
         });
-        $(function(){
-        $("#suggested-gift").hide();
-        $.get("/api/topten", function(data){
-            console.log(data);
-            var topTen;
-            if(data.length<10){
-                topTen=data.length
-            }else{topTen=10};
-            for (var i = 0; i < topTen; i++) {
-                var ttdiv = $("<div class=card>");
-                var p = $("<div class=card-title>").html("#" + (i+1));
-                var textDiv = $("<div class=card-body>").html(data[i].text);
-                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
-                ttdiv.append(p).append(textDiv).append(authorDiv);
-                $("#top-ten-list").append(ttdiv);
-            }
-        });
-    })
-    $('#submit').on('click',function(){
-        //event.preventDefault();
-    console.log('clicked')
-    var newTweet = {
-        author:$("#authorName").val().trim(),
-        text: $("#inputText").val().trim(),
-    }
+        $(function () {
+            $("#suggested-gift").hide();
+            $.get("/api/topten", function (data) {
+                console.log(data);
+                var topTen;
+                if (data.length < 10) {
+                    topTen = data.length
+                } else { topTen = 10 };
+                for (var i = 0; i < topTen; i++) {
+                    var ttdiv = $("<div class=card>");
+                    var p = $("<div class=card-title>").html("#" + (i + 1));
+                    var textDiv = $("<div class=card-body>").html(data[i].text);
+                    var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
+                    ttdiv.append(p).append(textDiv).append(authorDiv);
+                    $("#top-ten-list").append(ttdiv);
+                }
+            });
+        })
 
-    $.post("/api/new", newTweet).then(function(result){
-        var id=result.id;
-    
-        $('.inputShow').hide();
-        $('.resultsShow').show();
-        
-        $('#perc').text(result.score);
-        if (result.score < 40) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Bouquet Of Flowers");
-            $("#desc").html("What woman doesn't like flowers. Its a timeless gift that will show her that you are truely sorry for whatever transgression you have commited.");
-            $("#item-image").html("<img src='./images/Flowers.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.1800flowers.com/");
-        } else if (result.score >= 40 && result.score < 55) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Chocolate");
-            $("#desc").html("Chocolate says I'm sorry so much better than words.");
-            $("#item-image").html("<img src='./images/chocolate.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.godiva.com/");
-        } else if (result.score >= 55 && result.score < 65) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Roses");
-            $("#desc").html("Its now time to break out the big guns. whatever you have done, you probably will want to stop doing it.");
-            $("#item-image").html("<img src='./images/roses.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.1800flowers.com/roses");
-        } else if (result.score >= 65 && result.score < 75) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Puppy");
-            $("#desc").html("This gift is almost unfair. Who can say no to a cute puppy, its guaranteed to melt her heart.");
-            $("#item-image").html("<img src='./images/puppy.jpg' class='gift'>");
-            $("#button").attr("href", "www.aspca.org/adopt‎");
-        } else if (result.score >= 75 && result.score < 85) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Jewelry");
-            $("#desc").html("She seems like she is starting to get tired of your nonsense. Small jewelry is always a nice choice to bring you back into her good graces.");
-            $("#item-image").html("<img src='./images/jewelry.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.bluenile.com/jewelry?track=NavDrawJewelry");
-        } else if (result.score >= 85 && result.score < 95) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("Diamonds");
-            $("#desc").html('Dude, she seems super angry. Diamonds are a "girls best friend". Always a classy choice but they can be expensive. but she deserves it for putting up with your dumb ass.');
-            $("#item-image").html("<img src='./images/diamonds.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.bluenile.com/diamond-jewelry");
-        } else if (result.score >= 95) {
-            $("#suggested-gift").show();
-            $("#itemTitle").html("A New Car");
-            $("#desc").html('Brah, you probably do not want to go home. She is beyond pissed off. The only thing that might save you is buying her a new car.');
-            $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
-            $("#button").attr("href", "https://www.cars.com/");
-        }
-        $.get("/api/topten", function(data){
-            console.log(data);
-            var rank= data.findIndex(x => x.id==id);
-            rank+=1;
-            console.log(rank);
-            $('#rank').text("That text ranked #"+rank+"!");
-        });
-        $.get("/api/topten", function(data){
-            console.log(data);
-            $("#top-ten-list").empty();
-            var topTen;
-            if(data.length<10){
-                topTen=data.length
-            }else{topTen=10};
-            for (var i = 0; i < topTen; i++) {
-                var ttdiv = $("<div class=card>");
-                var p = $("<div class=card-title>").html("#" + (i+1));
-                var textDiv = $("<div class=card-body>").html(data[i].text);
-                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
-                ttdiv.append(p).append(textDiv).append(authorDiv);
-                $("#top-ten-list").append(ttdiv);
+        $('.resultsShow').hide();
+        $('#rank').hide();
+        $('#item-image').hide();
+        $('#gift-description').hide();
+        $('#giftTitle').hide();
+
+        $('#submit').on('click', function () {
+            event.preventDefault();
+            console.log('clicked')
+            var newTweet = {
+                author: $("#authorName").val().trim(),
+                text: $("#inputText").val().trim(),
             }
+
+            $("authorName").val('');
+            $("inputText").val("");
+
+            $.post("/api/new", newTweet).then(function (result) {
+                var id = result.id;
+
+
+                $('.resultsShow').show();
+                $('#rank').show();
+                $('#item-image').show();
+                $('#gift-description').show();
+                $('#giftTitle').show();
+
+                $('#inputCallToAction').hide();
+
+                $('#perc').text(result.score);
+                if (result.score < 40) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Bouquet Of Flowers");
+                    $("#desc").html("What woman doesn't like flowers. Its a timeless gift that will show her that you are truely sorry for whatever transgression you have commited.");
+                    $("#item-image").html("<img src='./images/Flowers.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.1800flowers.com/");
+                } else if (result.score >= 40 && result.score < 55) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Chocolate");
+                    $("#desc").html("Chocolate says I'm sorry so much better than words.");
+                    $("#item-image").html("<img src='./images/chocolate.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.godiva.com/");
+                } else if (result.score >= 55 && result.score < 65) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Roses");
+                    $("#desc").html("Its now time to break out the big guns. whatever you have done, you probably will want to stop doing it.");
+                    $("#item-image").html("<img src='./images/roses.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.1800flowers.com/roses");
+                } else if (result.score >= 65 && result.score < 75) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Puppy");
+                    $("#desc").html("This gift is almost unfair. Who can say no to a cute puppy, its guaranteed to melt her heart.");
+                    $("#item-image").html("<img src='./images/puppy.jpg' class='gift'>");
+                    $("#button").attr("href", "www.aspca.org/adopt‎");
+                } else if (result.score >= 75 && result.score < 85) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Jewelry");
+                    $("#desc").html("She seems like she is starting to get tired of your nonsense. Small jewelry is always a nice choice to bring you back into her good graces.");
+                    $("#item-image").html("<img src='./images/jewelry.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.bluenile.com/jewelry?track=NavDrawJewelry");
+                } else if (result.score >= 85 && result.score < 95) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("Diamonds");
+                    $("#desc").html('Dude, she seems super angry. Diamonds are a "girls best friend". Always a classy choice but they can be expensive. but she deserves it for putting up with your dumb ass.');
+                    $("#item-image").html("<img src='./images/diamonds.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.bluenile.com/diamond-jewelry");
+                } else if (result.score >= 95) {
+                    $("#suggested-gift").show();
+                    $("#itemTitle").html("A New Car");
+                    $("#desc").html('Brah, you probably do not want to go home. She is beyond pissed off. The only thing that might save you is buying her a new car.');
+                    $("#item-image").html("<img src='./images/new-car.jpg' class='gift'>");
+                    $("#button").attr("href", "https://www.cars.com/");
+                }
+                $.get("/api/topten", function (data) {
+                    console.log(data);
+                    var rank = data.findIndex(x => x.id == id);
+                    rank += 1;
+                    console.log(rank);
+                    $('#rank').text("It ranked #" + rank + "!");
+                });
+                $.get("/api/topten", function (data) {
+                    console.log(data);
+                    $("#top-ten-list").empty();
+                    var topTen;
+                    if (data.length < 10) {
+                        topTen = data.length
+                    } else { topTen = 10 };
+                    for (var i = 0; i < topTen; i++) {
+                        var ttdiv = $("<div class=card>");
+                        var p = $("<div class=card-title>").html("#" + (i + 1));
+                        var textDiv = $("<div class=card-body>").html(data[i].text);
+                        var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].user);
+                        ttdiv.append(p).append(textDiv).append(authorDiv);
+                        $("#top-ten-list").append(ttdiv);
+                    }
+                });
+
+            });
+
         });
 
-    });
-    
-});
+        $('#submitAuthor').on('click', function () {
+            //event.preventDefault();
+            console.log('author query clicked')
+            var authorQuery = "/api/author/" + $("#authorSearch").val().trim();
+            console.log(authorQuery);
 
-$('#submitAuthor').on('click',function(){
-        //event.preventDefault();
-    console.log('author query clicked')
-    var authorQuery = "/api/author/"+$("#authorSearch").val().trim();
-    console.log(authorQuery);
-    
-    $.get(authorQuery, function(data){
-            console.log("get request returned");
-            console.log(data);
-            console.log(data.length);
-            for(var i=0; i<data.length; i++){
-                console.log(" it should be displaying this" +data[i].text);
-                // $("#authorTexts").append(data[i].text);
-                var atdiv = $("<div class=card>");
-                var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].score + "%");
-                var textDiv = $("<div class=card-body>").html(data[i].text);
-                atdiv.append(textDiv).append(authorDiv);
-                $("#authorTexts").append(atdiv);
-            }
-        $.get("/api/rank", function(data){
-            console.log(data);
-    
+            $.get(authorQuery, function (data) {
+                console.log("get request returned");
+                console.log(data);
+                console.log(data.length);
+                for (var i = 0; i < data.length; i++) {
+                    console.log(" it should be displaying this" + data[i].text);
+                    // $("#authorTexts").append(data[i].text);
+                    var atdiv = $("<div class=card>");
+                    var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].score + "%");
+                    var textDiv = $("<div class=card-body>").html(data[i].text);
+                    atdiv.append(textDiv).append(authorDiv);
+                    $("#authorTexts").append(atdiv);
+                }
+                $.get("/api/rank", function (data) {
+                    console.log(data);
+
+                });
+            });
         });
-    });
-});
-    
+
     </script>
 
 </body>
