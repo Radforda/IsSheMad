@@ -7,7 +7,8 @@ const logic={
     train : function(){net.train(serializer.serialize(trainData), {log: true, iterations: 2500})},
     run : function(message){
         message=serializer.encode(message);
-        maxLengthInput=100;
+        if(message.length>50){message.slice(0, 50);};
+        maxLengthInput=50;
         while (message.length < maxLengthInput) {
             message.push(0);
           }

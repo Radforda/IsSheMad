@@ -1,6 +1,6 @@
 const fixLengths = (data) => {
 
-  let maxLengthInput = 100;
+  let maxLengthInput = 50;
   // for (let i = 0; i < data.length; i++) {
   //   if (data[i].input.length > maxLengthInput) {
   //     maxLengthInput = data[i].input.length;
@@ -8,6 +8,7 @@ const fixLengths = (data) => {
   // }
 
   for (let i = 0; i < data.length; i++) {
+    if(data[i].length>50){data[i].slice(0, 50);};
     while (data[i].input.length < maxLengthInput) {
       data[i].input.push(0);
     }
