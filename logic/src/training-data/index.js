@@ -6,6 +6,7 @@ const happy   = require('./d-happy')
 
 const moods = [
   ...okay,
+  ...happy,
   ...angry,
   ...superAngry
 ];

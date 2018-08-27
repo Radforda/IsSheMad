@@ -4,7 +4,7 @@ const serializer = require('./src/serializer')
 const net        = new brain.NeuralNetwork()
 
 const logic={
-    train : function(){net.train(serializer.serialize(trainData), {log: true, iterations: 120})},
+    train : function(){net.train(serializer.serialize(trainData), {log: true, iterations: 2500})},
     run : function(message){
         message=serializer.encode(message);
         maxLengthInput=100;
@@ -15,17 +15,17 @@ const logic={
         console.log(result);
         //weight super angry and happy higher
         result.superAngry=result.superAngry*2;
-        //result.happy=result.happy*2;
+        result.happy=result.happy*2;
 
         //normalize
         total=result.okay+result.angry +result.superAngry;
-        result.okay=result.okay/total;
-        //result.happy=0
+        //result.okay=result.okay/total;
+        result.happy=result.happy/total;
         result.angry=result.angry/total;
         result.superAngry=result.superAngry/total;
         
         //add angry and subtract happy to determine howAngry then convert to percentage
-        howAngry=Math.round((result.superAngry+result.angry-result.okay)*100);
+        howAngry=Math.round((result.superAngry+result.angry-result.happy)*100);
         if(howAngry<0){howAngry=0};
     return howAngry}
 };
