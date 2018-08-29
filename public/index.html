@@ -280,6 +280,7 @@
                     var authorDiv = $("<div class=card-footer bg-light text-right class=bottom>").html(data[i].score + "%");
                     var textDiv = $("<div class=card-body>").html(data[i].text);
                     atdiv.append(textDiv).append(authorDiv);
+                    $("#authorTexts").text("");
                     $("#authorTexts").append(atdiv);
                 }
                 $.get("/api/rank", function (data) {
