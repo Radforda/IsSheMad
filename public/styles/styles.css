@@ -16,7 +16,7 @@
   display: none;
 }
 #header-text{
-  font-size: 10em;
+  font-size: 7rem;
   color: red;
   font-family: 'Rock Salt', sans-serif;
   text-shadow: 2px 2px 9px black;
@@ -28,13 +28,14 @@ h1 {
   font-family: 'Rock Salt', sans-serif;
   text-align: center;
   font-size-adjust: inherit;
+  margin-top:25px;
 }
 
 .card {
   border: 1px solid red;
   border-radius: 5px;
   margin: 16px;
-  width: 45%;
+  width:40%;
   margin-left: 25px;
 }
 
@@ -71,7 +72,9 @@ h1 {
 .jumbotron {
   background-image: url('images/pexels-photo-984954.jpeg');
   background-size: cover;
+  background-position: center;
   height:100%;
+  width:100%;
   position: relative;
 }
 
@@ -87,7 +90,7 @@ h1 {
 #topLinks a{
   color: white;
   text-decoration: none;
-  font-size: 3em;
+  font-size: 3rem;
   margin: 20px; 
   /* border: 2px white solid; */
   padding: 10px;
@@ -100,27 +103,20 @@ h1 {
 }
 
 i {
-  font-size: 10em;
+  font-size: 10rem;
   opacity: .5;
 
 }
-#item-image {
+#giftImg {
   /* float:right; */
-  width: 40%;
-  height: 60%;
+  width: 80%;
+  height:auto;
 }
 
-#suggestedgift {
-  height:100%;
-}
 
-#gift-description {
-  width:50%;
-  height: 200px;
-}
 
 #inputDiv {
-  height: 50%;
+  clear:both;
 }
 
 .title {
@@ -141,10 +137,10 @@ i {
 #navTitle {
   font-family:  'Rock Salt', sans-serif;
   color:red;
-  font-size: 1.5em;
+  font-size: 1.5rem;
 }
-.navlinks {
-  font-size: 1.25em;
+#link {
+  font-size: 1.25rem;
   color: red;
  
 }
@@ -163,3 +159,31 @@ i {
  
 }
 
+html {
+  font-size: 20px;
+}
+.unbehaved-element {
+  font-size: 2em;
+}
+@media(max-width: 1580px) {
+html {
+  font-size: 18px;
+}
+.unbehaved-element {
+  font-size: 1.9em; /* Fine tune unbehaved elements */
+}
+}
+
+
+@media(max-width: 768px) {
+html {
+  font-size: 14px;
+  
+}
+.card {
+  
+  width:100%;
+ 
+}
+
+}
