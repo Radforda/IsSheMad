@@ -55,15 +55,10 @@ setTimeout(function() {
 }, 3000); 
  
 //keep heroku awake
-var http = require("http");
 setInterval(function() {
-  var authorQuery = "/api/author/" + "andrea";
-$.get(authorQuery, function (data) {
-    console.log("get request returned");
-    console.log(data);
-});
-
-
-}, 300000); // every 5 minutes (300000)
+      app.get("/api/topten", function(req, res) {
+        db.userinputs.findAll({ })
+      });
+  }, 300000); // every 5 minutes (300000)
 
 module.exports = app;
